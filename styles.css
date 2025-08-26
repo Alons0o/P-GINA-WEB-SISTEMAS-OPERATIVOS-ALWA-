@@ -1,0 +1,1140 @@
+/* --- Paleta de Colores --- */
+/* #FFFFFF (Blanco Puro) */
+/* #F20505 (Rojo Brillante) */
+/* #BF2424 (Rojo Oscuro/Granate) */
+/* #F3F2F2 (Gris Muy Claro/Casi Blanco) */
+/* #3DC36A (Verde Vibrante) */
+/* #040C0D (Negro Muy Oscuro/Gris Azabache) */
+
+/* --- Estilos Globales y Reset --- */
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #F3F2F2; /* Un gris muy claro para el fondo general */
+    /* Nueva tipografía: Limpia y moderna sans-serif */
+    font-family: 'Roboto', 'Arial', sans-serif; /* Puedes añadir 'Inter' si lo importas de Google Fonts */
+    color: #040C0D; /* Texto global en negro muy oscuro para contraste */
+    font-size: 16px; /* Tamaño base de fuente para el body */
+    line-height: 1.6; /* Altura de línea para mejor legibilidad */
+}
+
+h1, h2, h3 {
+    color: #3DC36A; /* Verde vibrante para los títulos, reflejando sostenibilidad */
+    margin-top: 0;
+    font-family: 'Montserrat', 'Helvetica Neue', sans-serif; /* Otra fuente más robusta para títulos */
+    line-height: 1.2; /* Altura de línea más ajustada para títulos */
+}
+
+h1 {
+    font-size: 3.2rem; /* Tamaño grande para el título principal */
+    font-weight: 700; /* Negrita */
+}
+
+h2 {
+    font-size: 2.2rem; /* Tamaño para subtítulos de sección */
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+}
+
+h3 {
+    font-size: 1.6rem; /* Tamaño para títulos de subsección */
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+p, ul, ol {
+    font-size: 1rem; /* Tamaño base para párrafos y listas */
+    margin-bottom: 1rem;
+}
+
+/* --- Contenedor Principal --- */
+.contenedor-principal {
+    width: 90%;
+    max-width: 1500px;
+    margin: 40px auto;
+    background-color: #FFFFFF; /* Fondo blanco puro para el contenido principal */
+    padding: 30px; /* Más padding para que respire más */
+    overflow: hidden;
+    min-height: calc(100vh - 80px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada pero suave */
+    border-radius: 15px; /* Ligeramente menos redondeado, más moderno */
+    display: grid;
+    grid-template-areas:
+        "cabecera cabecera"
+        "menu menu"
+        "zona-contenido zona-contenido"
+        "institucional institucional";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 25px; /* Más espacio entre las grandes secciones */
+}
+
+/* --- Cabecera --- */
+.cabecera {
+    grid-area: cabecera;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 15px; /* Coherente con contenedor principal */
+    margin-bottom: 0; /* Ajustado para el gap del grid */
+    background-color: #040C0D; /* Fondo negro muy oscuro si no hay banner */
+    color: #FFFFFF;
+    display: flex; /* Para centrar contenido si no hay banner o para el h1 */
+    justify-content: center;
+    align-items: center;
+}
+
+.cabecera h1 {
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    font-size: 3.5rem; /* Ajuste para que se vea grande en el banner */
+}
+
+/* Estilos para el banner animado */
+.ban {
+    display: flex;
+    width: calc(8 * 600px);
+    height: 100%;
+    animation: scrollBanner 20s linear infinite;
+    position: absolute; /* Para que el h1 esté encima */
+    top: 0;
+    left: 0;
+    z-index: 1; /* Bajo el h1 */
+}
+
+.ban img {
+    width: 600px;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: block;
+}
+
+@keyframes scrollBanner {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-6 * 600px));
+    }
+}
+
+.cabecera:hover .ban {
+    animation-play-state: paused;
+}
+
+
+/* --- Menú de Navegación --- */
+.menu {
+    grid-area: menu;
+    width: 100%; /* Ocupa el 100% del área */
+    margin: 0px auto; /* No es necesario si es 100% de ancho de grid item */
+    border-radius: 15px; /* Coherente con otros elementos */
+    background-color: #040C0D;
+    font-size: 1.1em; /* Un poco más pequeño para una estética más refinada */
+    overflow: hidden;
+    padding: 0;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    overflow: hidden;
+}
+
+.menu li {
+    flex: 1;
+}
+
+.menu a {
+    display: block;
+    padding: 18px 20px; /* Más padding vertical para botones más altos */
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: 500; /* Un poco más de peso para la fuente */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Añadida transformación */
+}
+
+.menu a:hover {
+    background-color: #3DC36A;
+    color: #FFFFFF;
+    border-radius: 10px; /* Menos redondeado en hover */
+    transform: translateY(-2px); /* Pequeño efecto al pasar el mouse */
+}
+
+/* --- Área de Contenido --- */
+.zona-contenido {
+    grid-area: zona-contenido;
+    width: 100%; /* Ocupa el 100% del área */
+    margin: 0 auto;
+    padding: 0; /* El padding se manejará en los elementos internos */
+    border-radius: 15px;
+    background-color: #BF2424; /* Rojo Oscuro/Granate para el fondo del área de contenido */
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px; /* Ajuste de gap */
+    overflow: hidden; /* Asegura que los radios se vean bien */
+}
+
+/* --- Información Principal (izquierda) --- */
+.informacion-principal {
+    border-radius: 15px; /* Coherente con otros elementos */
+    background-color: #FFFFFF; /* Blanco puro */
+    font-size: 1rem; /* Tamaño de fuente base para esta sección */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    gap: 25px; /* Más espacio entre los cuadros */
+    padding: 30px; /* Más padding para el contenido */
+    color: #040C0D;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra muy sutil */
+}
+
+/* --- Barra Lateral (derecha) --- */
+.barra-lateral {
+    border-radius: 15px; /* Coherente con otros elementos */
+    background-color: #F3F2F2; /* Gris muy claro */
+    font-size: 1rem; /* Tamaño de fuente base para esta sección */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 30px; /* Más padding para el contenido */
+    color: #040C0D;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra muy sutil */
+}
+
+.barra-lateral h3 {
+    color: #BF2424; /* Rojo oscuro para los títulos de la barra lateral */
+    font-size: 1.8rem; /* Un poco más grande para destacar */
+}
+
+.barra-lateral p {
+    font-size: 0.95rem; /* Párrafos un poco más pequeños en la lateral */
+    line-height: 1.5;
+}
+
+.barra-lateral img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto; /* Más margen */
+    border-radius: 10px; /* Añadir redondeo a las imágenes */
+}
+
+/* --- Cuadros de Contenido (dentro de informacion-principal) --- */
+.cuadro1, .cuadro2 {
+    width: 100%; /* Ocupan todo el ancho disponible del padre */
+    border-radius: 10px; /* Menos redondeado para un look más "aesthetic" */
+    font-size: 1.05rem; /* Ligeramente más grande para legibilidad */
+    margin: 0; /* Resetear los márgenes específicos de tu ejemplo */
+    overflow: hidden;
+    text-align: justify;
+    background-color: #FFFFFF; /* Mantener blanco para los cuadros de contenido */
+    color: #040C0D;
+    padding: 25px; /* Más padding interno */
+    box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Sombra suave */
+    line-height: 1.7; /* Mayor altura de línea para mejor legibilidad */
+}
+
+.cuadro1 h2, .cuadro2 h2 {
+    margin-bottom: 1rem;
+}
+
+.cuadro1 img {
+    max-width: 50%; /* Un poco más grande */
+    height: auto;
+    float: none;
+    margin-left: 220px; /* Más espacio a la izquierda del texto */
+    margin-bottom: 15px; /* Más espacio debajo de la imagen */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Pequeña sombra para la imagen */
+}
+
+.cuadro1 p {
+    /* Si el margin-top negativo causa problemas, déjalo comentado */
+    /* margin-top: -290px; */
+}
+
+.cuadro2 video {
+    margin: 25px auto; /* Más margen */
+    border-radius: 10px;
+    max-width: 100%;
+    display: block;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra para el video */
+}
+
+/* --- Pie de Página --- */
+.institucional {
+    grid-area: institucional;
+    margin: 0 auto; /* Ajustado para el gap del grid */
+    padding: 30px; /* Más padding */
+    border-radius: 15px;
+    background-color: #040C0D;
+    text-align: center;
+    font-size: 0.9em; /* Un poco más pequeño */
+    color: #FFFFFF;
+    width: 100%; /* Ocupa el 100% del área */
+    box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.15); /* Sombra hacia arriba, más pronunciada */
+}
+
+.institucional .redes a {
+    color: #3DC36A;
+    text-decoration: none;
+    margin: 0 15px; /* Más espacio entre los enlaces */
+    font-size: 1.1em; /* Un poco más grandes */
+    font-weight: 500;
+}
+
+.institucional .redes a:hover {
+    text-decoration: underline;
+    color: #F20505;
+}
+
+/* --- Media Queries para Responsividad (revisadas para nuevos tamaños/espacios) --- */
+@media (max-width: 768px) {
+    body {
+        font-size: 15px; /* Reducir tamaño base en mobile */
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    .contenedor-principal {
+        grid-template-areas:
+            "cabecera"
+            "menu"
+            "zona-contenido"
+            "institucional";
+        grid-template-columns: 1fr;
+        margin: 10px;
+        width: auto;
+        padding: 15px; /* Menos padding en mobile */
+        gap: 15px; /* Menos gap en mobile */
+        border-radius: 10px; /* Más redondeado en mobile */
+    }
+
+    .cabecera {
+        height: 200px; /* Más pequeña en mobile */
+        border-radius: 10px;
+    }
+    .cabecera h1 {
+        font-size: 2rem;
+    }
+
+    .ban img {
+        width: 300px;
+    }
+    @keyframes scrollBanner {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-6 * 300px)); }
+    }
+
+    .menu {
+        width: auto;
+        margin: 0; /* Sin márgenes laterales extra */
+        border-radius: 10px;
+        font-size: 1em;
+    }
+    .menu ul {
+        flex-direction: column;
+    }
+    .menu li {
+        width: 100%;
+        margin: 3px 0;
+    }
+    .menu a {
+        padding: 12px 15px;
+        border-radius: 8px;
+    }
+
+    .zona-contenido {
+        grid-template-columns: 1fr;
+        width: auto;
+        margin: 0;
+        padding: 0; /* Resetear el padding aquí, los hijos lo manejarán */
+        border-radius: 10px;
+        gap: 15px; /* Reducir el gap */
+    }
+
+    .informacion-principal, .barra-lateral {
+        padding: 20px; /* Reducir padding */
+        border-radius: 10px;
+        font-size: 0.95rem;
+        width: auto;
+        margin: 0;
+    }
+
+    .cuadro1, .cuadro2 {
+        width: auto;
+        margin: 0; /* Sin márgenes especiales */
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .cuadro1 img {
+        float: none;
+        aling: center;
+        display: block;
+        margin: 10px auto;
+        max-width: 100%; /* Asegura que no sea demasiado grande */
+    }
+
+    .cuadro2 video {
+        width: 100%;
+        margin: 15px auto;
+    }
+
+    .institucional {
+        width: auto;
+        margin: 10px;
+        padding: 20px;
+        border-radius: 10px;
+        font-size: 12px;
+    }
+    .institucional .redes a {
+        font-size: 1em;
+        margin: 0 8px;
+    }
+}
+
+
+
+
+
+/* Estilos específicos para la disposición de las columnas de soluciones */
+        .soluciones-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Por defecto, una columna en móviles */
+            gap: 30px; /* Espacio entre las columnas */
+            margin-top: 20px;
+        }
+
+        .soluciones-grid h3 {
+            color: #040C0D; /* Títulos de subcategorías en negro oscuro */
+            border-bottom: 2px solid #3DC36A; /* Línea verde debajo de los títulos */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .soluciones-grid ul {
+            list-style: none; /* Eliminar los puntos de la lista */
+            padding: 0;
+            margin: 0;
+        }
+
+        .soluciones-grid li {
+            margin-bottom: 10px;
+        }
+
+        .soluciones-grid li a {
+            color: #3DC36A; /* Enlaces de soluciones en verde */
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+        }
+
+        .soluciones-grid li a:hover {
+            color: #F20505; /* Rojo brillante en hover */
+            text-decoration: underline;
+        }
+
+        /* Responsive para desktop: 3 columnas */
+        @media (min-width: 768px) {
+            .soluciones-grid {
+                grid-template-columns: 1fr 1fr 1fr; /* Tres columnas en pantallas grandes */
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* Estilos específicos para la sección "Acerca de" */
+
+        /* Sección de Banner de Equipo */
+        .banner-equipo {
+            background-color: #3DC36A; /* Verde vibrante para el fondo del banner de equipo */
+            color: #FFFFFF;
+            padding: 50px 30px; /* Más padding */
+            text-align: left;
+            position: relative;
+            overflow: hidden; /* Asegura que la imagen no se salga */
+            border-radius: 10px; /* Borde suave */
+            margin-bottom: 30px;
+        }
+
+        .banner-equipo h2 {
+            font-size: 2.8rem; /* Título grande */
+            font-weight: 700;
+            color: #FFFFFF; /* Texto blanco */
+            margin-bottom: 20px;
+            z-index: 2; /* Para que esté sobre la imagen */
+            position: relative;
+        }
+
+        .banner-equipo img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: auto; /* Asegura que la imagen se ajuste y mantenga proporciones */
+            object-fit: cover;
+            border-radius: 0 10px 10px 0; /* Solo el lado derecho */
+            z-index: 1;
+        }
+
+        /* En la imagen, el texto "Un equipo, una familia" está a la izquierda y la imagen a la derecha. */
+        /* Para lograrlo de forma simple: */
+        .banner-equipo .texto {
+            width: 50%; /* Ocupa la mitad del ancho */
+            float: left; /* Flota a la izquierda */
+            padding-right: 20px; /* Espacio con la imagen */
+            box-sizing: border-box;
+            z-index: 2;
+            position: relative;
+        }
+        /* Limpiar flotados */
+        .banner-equipo::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Sección Misión/Visión/Valores */
+        .mision-vision-valores {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .mision-vision-valores h2 {
+            color: #BF2424; /* Rojo oscuro para el título "Acerca de la empresa" */
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .mision-vision-valores .subseccion {
+            background-color: #F3F2F2; /* Fondo gris muy claro para las subsecciones */
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+
+        .mision-vision-valores .subseccion h3 {
+            color: #040C0D; /* Título de Misión en negro oscuro */
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            text-align: center; /* Centrar el título de Misión/Visión */
+        }
+        .mision-vision-valores .subseccion p {
+            color: #040C0D;
+            line-height: 1.7;
+        }
+
+        /* Valores en Grid */
+        .nuestros-valores {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .nuestros-valores h3 {
+            color: #BF2424; /* Título "Nuestros Valores" en rojo oscuro */
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .valores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Columnas responsivas */
+            gap: 25px; /* Espacio entre los elementos de valor */
+            margin-top: 20px;
+        }
+
+        .valor-item {
+            background-color: #FFFFFF;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .valor-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .valor-item img {
+            width: 60px; /* Tamaño de los iconos */
+            height: 60px;
+            margin-bottom: 15px;
+        }
+
+        .valor-item h4 {
+            color: #3DC36A; /* Nombre del valor en verde */
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .valor-item p {
+            font-size: 0.95rem;
+            color: #040C0D;
+        }
+
+
+        /* Nuestra Historia (sin timeline) */
+        .nuestra-historia-simple {
+            background-color: #F3F2F2; /* Fondo gris claro */
+            padding: 40px 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nuestra-historia-simple h3 {
+            text-align: center;
+            color: #BF2424;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+        }
+
+        .hitos-historia {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr; /* Una columna por defecto */
+            gap: 20px; /* Espacio entre los hitos */
+        }
+
+        .hito-item {
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            display: flex; /* Para alinear el año y la descripción */
+            align-items: flex-start;
+            gap: 15px; /* Espacio entre el año y el texto */
+        }
+
+        .hito-item .year {
+            font-weight: 700;
+            color: #3DC36A; /* Año en verde vibrante */
+            font-size: 1.4rem;
+            flex-shrink: 0; /* Evita que el año se encoja */
+            width: 70px; /* Ancho fijo para el año */
+            text-align: right;
+            padding-right: 15px;
+            border-right: 2px solid #3DC36A; /* Línea de separación sutil */
+        }
+
+        .hito-item .description {
+            font-size: 1rem;
+            color: #040C0D;
+            line-height: 1.6;
+        }
+
+        /* Responsive para móvil */
+        @media (max-width: 768px) {
+            .banner-equipo .texto {
+                width: 100%;
+                float: none;
+                padding-right: 0;
+                text-align: center;
+            }
+            .banner-equipo img {
+                position: static;
+                width: 100%;
+                height: auto;
+                border-radius: 10px;
+                margin-top: 20px;
+            }
+
+            .mision-vision-valores .subseccion {
+                padding: 20px;
+            }
+
+            .valores-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hito-item {
+                flex-direction: column; /* Apilar año y descripción en móvil */
+                align-items: flex-start;
+                gap: 5px;
+                text-align: left;
+            }
+            .hito-item .year {
+                width: auto;
+                text-align: left;
+                padding-right: 0;
+                border-right: none;
+                border-bottom: 2px solid #3DC36A; /* Línea abajo del año en móvil */
+                padding-bottom: 5px;
+                margin-bottom: 5px;
+            }
+        }
+
+
+
+
+
+        /* Banner de Equipo (similar al de Acerca de, pero con texto ajustado) */
+        .banner-equipo-nosotros {
+            background-color: #3DC36A; /* Verde vibrante */
+            color: #FFFFFF;
+            padding: 50px 30px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .banner-equipo-nosotros h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .banner-equipo-nosotros img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: auto;
+            object-fit: cover;
+            border-radius: 0 10px 10px 0;
+            z-index: 1;
+        }
+
+        .banner-equipo-nosotros .texto {
+            width: 50%;
+            float: left;
+            padding-right: 20px;
+            box-sizing: border-box;
+            z-index: 2;
+            position: relative;
+        }
+        .banner-equipo-nosotros::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Sección de Jefes de Área */
+        .jefes-area-section {
+            background-color: #F3F2F2;
+            padding: 40px 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .jefes-area-section h3 {
+            color: #BF2424; /* Rojo oscuro para el título principal */
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+        }
+
+        .jefes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 2 o 3 columnas */
+            gap: 30px;
+            justify-content: center; /* Centrar los elementos si no llenan la fila */
+        }
+
+        .jefe-card {
+            background-color: #FFFFFF;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .jefe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .jefe-card img {
+            width: 120px; /* Tamaño de la foto de perfil */
+            height: 120px;
+            border-radius: 50%; /* Circular */
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid #3DC36A; /* Borde verde para la foto */
+        }
+
+        .jefe-card h4 {
+            color: #040C0D;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .jefe-card .cargo {
+            color: #BF2424; /* Rojo para el cargo */
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .jefe-card p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Sección de Equipos (listado) */
+        .equipos-alwa-section {
+            background-color: #FFFFFF;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .equipos-alwa-section h3 {
+            text-align: center;
+            color: #040C0D;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .equipos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas para equipos */
+            gap: 30px;
+        }
+
+        .equipo-item {
+            background-color: #F3F2F2; /* Fondo gris claro para cada equipo */
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .equipo-item h4 {
+            color: #3DC36A; /* Nombre del equipo en verde */
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #BF2424; /* Línea roja debajo del nombre del equipo */
+            padding-bottom: 8px;
+        }
+
+        .equipo-item ul {
+            list-style: none; /* Sin puntos */
+            padding: 0;
+            margin: 0;
+        }
+
+        .equipo-item li {
+            font-size: 1rem;
+            color: #040C0D;
+            margin-bottom: 8px;
+        }
+        .equipo-item li:last-child {
+            margin-bottom: 0; /* Sin margen en el último item */
+        }
+
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            .banner-equipo-nosotros .texto {
+                width: 100%;
+                float: none;
+                padding-right: 0;
+                text-align: center;
+            }
+            .banner-equipo-nosotros img {
+                position: static;
+                width: 100%;
+                height: auto;
+                border-radius: 10px;
+                margin-top: 20px;
+            }
+            .jefes-grid, .equipos-grid {
+                grid-template-columns: 1fr; /* Una columna en móviles */
+            }
+
+
+
+
+            /* Banner de Contacto */
+        .banner-contacto {
+            background-color: #3DC36A; /* Verde vibrante */
+            color: #FFFFFF;
+            padding: 50px 30px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .banner-contacto h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+            z-index: 2;
+            position: relative;
+        }
+        .banner-contacto p {
+            font-size: 1.2rem;
+            color: #FFFFFF;
+            z-index: 2;
+            position: relative;
+        }
+
+        .banner-contacto img {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: auto;
+            object-fit: cover;
+            border-radius: 0 10px 10px 0;
+            z-index: 1;
+        }
+
+        .banner-contacto .texto {
+            width: 50%;
+            float: left;
+            padding-right: 20px;
+            box-sizing: border-box;
+            z-index: 2;
+            position: relative;
+        }
+        .banner-contacto::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Sección del Formulario de Contacto y Detalles */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Formulario más grande que el lateral */
+            gap: 30px;
+            background-color: #F3F2F2;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .contact-form h3, .contact-details h3 {
+            color: #040C0D;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-form form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .contact-form form input[type="text"],
+        .contact-form form input[type="email"],
+        .contact-form form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .contact-form form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form form button {
+            background-color: #3DC36A;
+            color: #FFFFFF;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .contact-form form button:hover {
+            background-color: #F20505;
+            transform: translateY(-2px);
+        }
+
+        .contact-details {
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .contact-details p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: #040C0D;
+        }
+        .contact-details p strong {
+            color: #BF2424; /* Rojo oscuro para los títulos */
+        }
+        .contact-details a {
+            color: #3DC36A;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .contact-details a:hover {
+            color: #F20505;
+            text-decoration: underline;
+        }
+        .contact-details .btn-escribenos {
+            display: inline-block;
+            background-color: #3DC36A;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+        }
+        .contact-details .btn-escribenos:hover {
+            background-color: #F20505;
+            transform: translateY(-2px);
+        }
+
+
+        /* Sección de Oficinas y Mapas */
+        .oficinas-section {
+            background-color: #F3F2F2;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 30px; /* Espacio antes del footer */
+        }
+
+        .oficinas-section h3 {
+            color: #BF2424; /* Rojo oscuro */
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+        }
+
+        .mapas-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Una columna por defecto */
+            gap: 30px;
+        }
+
+        .oficina-item {
+            background-color: #FFFFFF;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            text-align: left;
+        }
+
+        .oficina-item h4 {
+            color: #040C0D;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .oficina-item p {
+            color: #555;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .oficina-item .map-placeholder { /* Estilo para la imagen placeholder del mapa */
+            width: 100%;
+            height: 300px; /* Altura fija para el espacio del mapa */
+            background-color: #e0e0e0; /* Un color de fondo para el placeholder */
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #888;
+            font-size: 1.2rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .oficina-item .map-placeholder img { /* Estilo si pones una imagen real del mapa */
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+
+        /* Responsive para móviles */
+        @media (max-width: 768px) {
+            .banner-contacto .texto {
+                width: 100%;
+                float: none;
+                padding-right: 0;
+                text-align: center;
+            }
+            .banner-contacto img {
+                position: static;
+                width: 100%;
+                height: auto;
+                border-radius: 10px;
+                margin-top: 20px;
+            }
+            .contact-content {
+                grid-template-columns: 1fr; /* Una columna en móviles */
+                padding: 20px 15px;
+            }
+            .oficinas-section {
+                padding: 20px 15px;
+            }
+            .oficinas-section h3 {
+                font-size: 1.8rem;
+            }
+            .oficina-item {
+                padding: 20px;
+            }
+            .oficina-item .map-placeholder {
+                height: 250px;
+            }
